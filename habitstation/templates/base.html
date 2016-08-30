@@ -1,15 +1,20 @@
+<!DOCTYPE html>
 <html>
-	<head>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>HabitStation</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css" />
 	</head>
-	<body>
-		<header>
-
+	<body class="layout-documentation page-grid">
+    <section class="hero is-primary">
+  <div class="hero-head">
+    <div class="container">
   <nav class="nav has-shadow">
   <div class="container">
   	<div class="nav-left">
-    <a class="nav-item is-brand" href="#">
+    <a class="nav-item is-brand" href="/">
       <h1 class="title is-1">Habit Station</h1>
     </a>
   </div>
@@ -23,8 +28,39 @@
     </div>
   </div>
 </nav>
-		</header>
       {% block content %}
       {% endblock %}
+</div>
+</div>
+    </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Habit Station</strong> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://phillipo.co.uk" property="cc:attributionName" rel="cc:attributionURL">Jonathan Phillipo</a>. The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+      </p>
+      <div id="social">
+        <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=jdphil&repo=hs&type=star&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="105px" height="20px"></iframe>
+        <a href="https://twitter.com/jdphil" class="twitter-follow-button" data-show-count="true" data-lang="en">@jdphil</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Habit Station: Learning new habits the easy way" data-url="http://habitstation.io" data-count="horizontal" data-via="jdphil" data-related="jdphil:Creator of Habit Station">Tweet</a>
+      </div>
+      <p>
+        Want to learn how to <strong>learn a new habit</strong>?
+        <br>
+        Read <a href="https://www.amazon.co.uk/gp/product/0385348614/">Better Than Before: a book by Gretchen Rubin.</a>.
+      </p>
+      <p>
+        Want to make a <strong>donation</strong>?
+      </p>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="change this">
+        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </div>
+  </div>
+</footer>
 	</body>	
 </html>
