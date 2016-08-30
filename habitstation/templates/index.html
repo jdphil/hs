@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+<section class="section">
  <div class="hero-body">
+ 	<img src="{% static "habitstation/images/bg.jpg" %}" alt="Background"/>
     <div class="container">
       <div class="columns is-vcentered">
         <div class="column">
           <p class="title">
-            Home
+            What are you waiting for?
           </p>
           <p class="subtitle">
-            Everything you need to <strong>create a habit</strong> with any effort
+            Everything you need to <strong>create a habit</strong> without any effort
           </p>
         </div>
         <div class="column is-narrow">
@@ -17,4 +20,5 @@
       </div>
     </div>
   </div>
+</section>
 {% endblock %}
