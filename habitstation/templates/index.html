@@ -3,7 +3,7 @@
 {% load static %}
 <section class="section">
  <div class="hero-body">
- 	<img src="{% static "habitstation/images/bg.jpg" %}" alt="Background"/>
+ 	
     <div class="container">
       <div class="columns is-vcentered">
         <div class="column">
@@ -14,8 +14,22 @@
             Everything you need to <strong>create a habit</strong> without any effort
           </p>
         </div>
-        <div class="column is-narrow">
-
+        <div class="column">
+<label class="label">Name</label>
+<p class="control">
+  <input class="input" type="text" placeholder="Joe Blogs">
+</p>
+<label class="label">Username</label>
+<p class="control has-icon has-icon-right">
+  <input class="input" type="text" placeholder="jblogs1">
+</p>
+<label class="label">Email</label>
+<p class="control has-icon has-icon-right">
+  <input class="input" type="text" placeholder="jblogs@habits.com">
+</p>
+<p class="control">
+  <button class="button is-primary">Submit</button>
+</p>
         </div>
       </div>
     </div>
