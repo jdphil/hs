@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from habitstation import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^about/', views.about, name='about'),
+    url(r'^habits/', views.habits, name='habits'),
     url(r'^contact/', views.contact, name='contact'),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
 ]
