@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^habits/', views.habits, name='habits'),
     url(r'^contact/', views.contact, name='contact'),
     url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': 'home'}, name='logout'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/successfully_logged_out/'}, name='logout'),
+    url(r'^successfully_logged_out/', views.successfully_logged_out, name='successfully_logged_out'),
 ]

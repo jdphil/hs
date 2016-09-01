@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
-   if request.user.is_authenticated:
+   if request.user.is_authenticated and not request.user.is_anonymous:	
        return redirect('/habits')	
    return render(request, 'index.html')
 
@@ -22,3 +22,7 @@ def contact(request):
 @login_required
 def habits(request):
 	return render(request, 'habits.html', {'user' : request.user})
+
+
+def successfully_logged_out(request):
+	return redirect('/')
