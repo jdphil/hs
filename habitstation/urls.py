@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^habits/', views.habits, name='habits'),
     url(r'^contact/', views.contact, name='contact'),
     url(r'^login/$', auth_views.login, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'home'}, name='logout'),
 ]

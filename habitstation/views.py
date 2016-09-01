@@ -21,4 +21,4 @@ def contact(request):
 
 @login_required
 def habits(request):
-	return render(request, 'about.html', {'user' : request.user})
+	return render(request, 'habits.html', {'user' : request.user})
