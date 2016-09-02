@@ -26,3 +26,22 @@ def habits(request):
 
 def successfully_logged_out(request):
 	return redirect('/')
+
+
+def register(request):
+    first_name = request.POST['first_name']
+    last_name = request.POST['last_name']
+    email = request.POST['email']
+    username = request.POST['email']
+    password = request.POST['password']
+    u = User.objects.create_user(username, email, password)
+    u.last_name = last_name
+    u.first_name = first_name
+    u.save()
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        return redirect('/habits')
+    else:
+         return redirect('/')
