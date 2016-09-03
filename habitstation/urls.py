@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^successfully_logged_out/', views.successfully_logged_out, name='successfully_logged_out'),
     url(r'^register/', views.register, name='register'),
     url(r'^add_habit/', views.add_habit, name='add_habit'),
+    url(r'^del_habit/', views.del_habit, name='del_habit'),
 ]

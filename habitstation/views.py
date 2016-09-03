@@ -33,7 +33,7 @@ def habits(request):
 
 
 def successfully_logged_out(request):
-	return redirect('/')
+	 return redirect('/')
 
 
 def register(request):
@@ -54,7 +54,7 @@ def register(request):
     else:
          return redirect('/')
 
-
+@login_required
 def add_habit(request):
     #do some stuff
     try:
@@ -66,6 +66,16 @@ def add_habit(request):
         print(h)
         return redirect('/habits')
     except:
-        pdb.set_trace()
+        #pdb.set_trace()
         print (sys.exc_info()[0])
         return redirect('/habits')
+
+#todo - not secure - other users can delete habits based on id
+#one option is to use a mixin that prevents other users from deleting
+@login_required
+def del_habit(request):
+    habit_id = request.GET['habit']
+    h = User_Habit(id=habit_id, habit_user=request.user)
+    h.delete()
+    print(habit_id)
+    return redirect('/habits') 
