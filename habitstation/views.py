@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from habitstation.models import User_Habit, User_Habit_Activity
 import pdb
+import sys
 # Create your views here.
 
 def home(request):
@@ -26,8 +27,8 @@ def contact(request):
 
 @login_required
 def habits(request):
-   list_habits = User_Habit.objects.all()
    #pdb.set_trace()
+   list_habits = User_Habit.objects.filter(habit_user=request.user.id)
    return render(request, 'habits.html', {'user' : request.user, 'habs' : list_habits})
 
 
@@ -52,3 +53,19 @@ def register(request):
         return redirect('/habits')
     else:
          return redirect('/')
+
+
+def add_habit(request):
+    #do some stuff
+    try:
+        current_user = request.user
+        name = request.POST['habit_name']
+        desc = request.POST['habit_desc']
+        freq = int(request.POST['habit_freq'])
+        h = User_Habit.objects.create_habit(current_user,name,desc,freq)
+        print(h)
+        return redirect('/habits')
+    except:
+        pdb.set_trace()
+        print (sys.exc_info()[0])
+        return redirect('/habits')

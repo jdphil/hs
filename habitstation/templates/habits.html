@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button.modal-close").click(function(){
+        $("div.modal").toggleClass("is-active");
+    });
+});
+</script>
+<script>
+$(document).ready(function(){
+    $("div.modal-background").click(function(){
+        $("div.modal").toggleClass("is-active");
+    });
+});
+</script>
+<script>
+$(document).ready(function(){
+    $("a.button.is-danger").click(function(){
+        $("div.modal").toggleClass("is-active");
+    });
+});
+</script>
 <section class="section">
  <div class="hero-body">
  	
@@ -8,11 +30,49 @@
       <div class="columns is-vcentered">
         <div class="column">
           <p class="title">
-            Welcome Back
+            Welcome Back {{ user.username }}
           </p>
           <p class="subtitle">
             Time to add some <strong>habits!</strong>
           </p>
+          <a class="button is-danger">Add Habit</a>
+          <div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-container">
+    <div class="modal-content">
+      <div class="box">
+      <!-- Any other Bulma elements you want -->
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+<form method="post" action="/add_habit/">
+{% csrf_token %}
+
+<label class="label">Habit</label>
+<p class="control has-icon has-icon-right">
+  <input class="input" type="text" name="habit_name" id="habit_name">
+</p>
+
+<label class="label">Habit Description</label>
+<p class="control has-icon has-icon-right">
+   <input class="input" type="text" name="habit_desc" id="habit_desc">
+</p>
+
+<label class="label">Habit Frequency</label>
+<p class="control has-icon has-icon-right">
+   <input class="input" type="text" name="habit_freq" id="habit_freq">
+</p>
+
+<p class="control">
+<button class="button is-primary" value="login" />Add Habit</button>
+<input type="hidden" name="next" value="{{ next }}" />
+</p>
+</form>
+</div>
+    </div>
+  </div>
+  <button class="modal-close"></button>
+</div>
         </div>
         <div class="column">
           {% if habs %}
