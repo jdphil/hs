@@ -14,6 +14,44 @@
             Time to add some <strong>habits!</strong>
           </p>
         </div>
+        <div class="column">
+          {% if habs %}
+          {% for h in habs %}
+          <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="http://placehold.it/128x128" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ h.habit }}</strong> <small>{{ h.habit_freq }} times per week</small>.<small>Current streak:{{ h.habit_streak }}</small>
+          <br>
+          {{ h.habit_desc }}
+        </p>
+      </div>
+      <nav class="level">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+          {% endfor %}
+          {% else %}
+          {% endif %}
+        </div>
         </div>
       </div>
     </div>

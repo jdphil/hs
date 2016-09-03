@@ -2,13 +2,18 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from habitstation.models import User_Habit, User_Habit_Activity
+import pdb
 # Create your views here.
 
 def home(request):
-   if request.user.is_authenticated and not request.user.is_anonymous:	
-       return redirect('/habits')	
-   return render(request, 'index.html')
+   #pdb.set_trace()
+   if request.user.is_authenticated() and not request.user.is_anonymous():
+       print ("logged in")	
+       return redirect('/habits')
+   else:
+       print ("NOT logged in")		
+       return render(request, 'index.html')
 
 
 def about(request):
@@ -21,7 +26,9 @@ def contact(request):
 
 @login_required
 def habits(request):
-	return render(request, 'habits.html', {'user' : request.user})
+   list_habits = User_Habit.objects.all()
+   #pdb.set_trace()
+   return render(request, 'habits.html', {'user' : request.user, 'habs' : list_habits})
 
 
 def successfully_logged_out(request):
@@ -38,9 +45,9 @@ def register(request):
     u.last_name = last_name
     u.first_name = first_name
     u.save()
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        login(request, user)
+    current_user = authenticate(username=username, password=password)
+    if current_user is not None:
+        login(request, current_user)
         # Redirect to a success page.
         return redirect('/habits')
     else:
