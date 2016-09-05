@@ -28,16 +28,16 @@
 
   
     <div class="nav-right nav-menu">
-      <a class="nav-item is-tab is-active" href="/">Home</a>
+      <a class="nav-item is-tab {% if nbar == 'home' %}is-active{% endif %}" href="/">Home</a>
       {% if user.is_authenticated %}
       <a class="nav-item is-tab" href="/logout">Logout</a>
       {% else %}
-      <a class="nav-item is-tab" href="/login">Login</a>
-	  <a class="nav-item is-tab">Register</a>
+      <a class="nav-item is-tab {% if nbar == 'login' %}is-active{% endif %}" href="/login">Login</a>
+	    <a class="nav-item is-tab {% if nbar == 'signup' %}is-active{% endif %}" href="/signup">Register</a>
       {% endif %}
-      <a class="nav-item is-tab" href="/about">About</a>
-      <a class="nav-item is-tab" href ="/contact">Contact</a>
-      <a class="nav-item is-tab">Blog</a>
+      <a class="nav-item is-tab {% if nbar == 'about' %}is-active{% endif %}" href="/about">About</a>
+      <a class="nav-item is-tab {% if nbar == 'contact' %}is-active{% endif %}" href ="/contact">Contact</a>
+      <a class="nav-item is-tab {% if nbar == 'blog' %}is-active{% endif %}" href="/blog">Blog</a>
     </div>
   </div>
 </nav>    

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<section class="section">
+ <div class="hero-body">
+ 	
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <p class="title">
+            What are you waiting for?
+          </p>
+          <p class="subtitle">
+            Everything you need to <strong>create a habit</strong> without any effort
+          </p>
+        </div>
+        <div class="column">
+          <form action="{% url 'register' %}" method="post" name="Signup_Form" class="form-signup" role="form">
+            {% csrf_token %}
+<label class="label">First Name</label>
+<p class="control">
+  <input class="input" name="first_name" id="first_name" type="text" placeholder="Joe">
+</p>
+<label class="label">Last Name</label>
+<p class="control">
+  <input class="input" name="last_name" id="last_name"type="text" placeholder="Blogs">
+</p>
+<label class="label">Username</label>
+<p class="control has-icon has-icon-right">
+  <input class="input" name="username" id="username" type="text" placeholder="jblogs1">
+</p>
+<label class="label">Email</label>
+<p class="control has-icon has-icon-right">
+  <input class="input" name="email" id="email" type="text" placeholder="jblogs@habits.com">
+</p>
+<label class="label">Password</label>
+<p class="control has-icon has-icon-right">
+  <input class="input" name="password" id="password" type="password" placeholder="........">
+</p>
+<label class="label">Confirm Password</label>
+<p class="control has-icon has-icon-right">
+  <input class="input" name="password" id="password" type="password" placeholder="........">
+</p>
+<p class="control">
+  <button class="button is-primary">Submit</button>
+</p>
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -14,27 +14,34 @@ def home(request):
        return redirect('/habits')
    else:
        print ("NOT logged in")		
-       return render(request, 'index.html')
+       return render(request, 'index.html', {'nbar' : 'home'})
 
 
 def about(request):
-   return render(request, 'about.html')
+   return render(request, 'about.html', {'nbar' : 'about'})
 
 
 def contact(request):
-   return render(request, 'login.html')
+   return render(request, 'contact.html', {'nbar' : 'contact'})
+
+
+def blog(request):
+   return render(request, 'blog.html', {'nbar' : 'blog'})
 
 
 @login_required
 def habits(request):
    #pdb.set_trace()
    list_habits = User_Habit.objects.filter(habit_user=request.user.id)
-   return render(request, 'habits.html', {'user' : request.user, 'habs' : list_habits})
+   return render(request, 'habits.html', {'user' : request.user, 'habs' : list_habits, 'nbar' : 'home'})
 
 
 def successfully_logged_out(request):
 	 return redirect('/')
 
+
+def signup(request):
+   return render(request, 'register.html', {'nbar' : 'signup'})
 
 def register(request):
     first_name = request.POST['first_name']
